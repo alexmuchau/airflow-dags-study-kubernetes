@@ -25,7 +25,7 @@ with DAG('producer_dag',
          catchup=False,
          default_args=default_args,
          default_view='graph',
-         tags=[tags['study'], tags['airflow-first-view']],
+         tags=['study', 'airflow-first-view'],
         ) as dag:
   
   dataset = Dataset('/opt/airflow/data/Churn_new.csv')

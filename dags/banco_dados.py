@@ -26,7 +26,7 @@ with DAG('postgres_dag',
          catchup=False,
          default_args=default_args,
          default_view='graph',
-         tags=[tags['study'], tags['airflow-first-view']],
+         tags=['study', 'airflow-first-view'],
         ) as dag:
   
   create_table = PostgresOperator(task_id="create_table",

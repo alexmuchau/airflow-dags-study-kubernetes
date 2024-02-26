@@ -24,7 +24,7 @@ with DAG('pool_dag',
          catchup=False,
          default_args=default_args,
          default_view='graph',
-         tags=[tags['study'], tags['airflow-first-view']],
+         tags=['study', 'airflow-first-view'],
         ) as dag:
   
   task1 = BashOperator(task_id="task1", bash_command='sleep 5', pool="firstpool")
