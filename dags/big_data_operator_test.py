@@ -1,7 +1,3 @@
-import json
-with open('/home/alekk/Documents/airflow-dags-study-kubernetes/utilities') as tags:
-  tags = json.load(tags)
-
 from airflow import DAG
 from datetime import datetime
 from big_data_operator import BigDataOperator
