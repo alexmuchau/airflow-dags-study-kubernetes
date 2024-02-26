@@ -21,7 +21,7 @@ with DAG(
   'emaildag',
   schedule_interval=None, 
   start_date=datetime(2023, 9, 10),
-  catchup=False, tags=[tags['study'],tags['airflow-first-view']],
+  catchup=False, tags=['study','airflow-first-view'],
   default_view='graph',
   default_args=default_args
 ) as dag:
