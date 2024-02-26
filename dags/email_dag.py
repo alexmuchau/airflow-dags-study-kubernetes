@@ -1,3 +1,7 @@
+import json
+with open('/home/alekk/Documents/airflow-dags-study-kubernetes/utilities') as tags:
+  tags = json.load(tags)
+
 from airflow import DAG
 from airflow.operators.bash import BashOperator
 from airflow.operators.email import EmailOperator
@@ -17,7 +21,14 @@ default_args = {
   'retry_delay': timedelta(seconds=2)
 }
 
-with DAG('emaildag', schedule_interval=None, start_date=datetime(2023, 9, 10), catchup=False, tags=['emaildag'], default_view='graph', default_args=default_args) as dag:
+with DAG(
+  'emaildag',
+  schedule_interval=None, 
+  start_date=datetime(2023, 9, 10),
+  catchup=False, tags=[tags['study'],tags['airflow-first-view']],
+  default_view='graph',
+  default_args=default_args
+) as dag:
   
   task1 = BashOperator(task_id="task1", bash_command="sleep 2")
   task2 = BashOperator(task_id="task2", bash_command="sleep 2")

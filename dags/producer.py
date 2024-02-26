@@ -1,3 +1,7 @@
+import json
+with open('/home/alekk/Documents/airflow-dags-study-kubernetes/utilities') as tags:
+  tags = json.load(tags)
+
 from airflow import DAG, Dataset
 from airflow.operators.python import PythonOperator
 from datetime import datetime, timedelta
@@ -21,7 +25,7 @@ with DAG('producer_dag',
          catchup=False,
          default_args=default_args,
          default_view='graph',
-         tags=['pandas', 'python', 'producer'],
+         tags=[tags['study'], tags['airflow-first-view']],
         ) as dag:
   
   dataset = Dataset('/opt/airflow/data/Churn_new.csv')

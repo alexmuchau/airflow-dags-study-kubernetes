@@ -1,3 +1,7 @@
+import json
+with open('/home/alekk/Documents/airflow-dags-study-kubernetes/utilities') as tags:
+  tags = json.load(tags)
+
 from airflow import DAG
 from airflow.operators.bash import BashOperator
 from datetime import datetime, timedelta
@@ -20,7 +24,7 @@ with DAG('default_args_dag',
          catchup=False,
          default_args=default_args,
          default_view='graph',
-         tags=['default_args', 'teste'],
+         tags=[tags['study'], tags['airflow-first-view']],
         ) as dag:
 
   task1 = BashOperator(task_id="task1", bash_command="sleep 5")

@@ -1,3 +1,7 @@
+import json
+with open('/home/alekk/Documents/airflow-dags-study-kubernetes/utilities') as tags:
+  tags = json.load(tags)
+
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.providers.postgres.operators.postgres import PostgresOperator
@@ -22,7 +26,7 @@ with DAG('postgres_dag',
          catchup=False,
          default_args=default_args,
          default_view='graph',
-         tags=['postgres', 'python'],
+         tags=[tags['study'], tags['airflow-first-view']],
         ) as dag:
   
   create_table = PostgresOperator(task_id="create_table",

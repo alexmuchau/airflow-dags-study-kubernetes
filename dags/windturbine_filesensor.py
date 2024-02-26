@@ -1,3 +1,7 @@
+import json
+with open('/home/alekk/Documents/airflow-dags-study-kubernetes/utilities') as tags:
+  tags = json.load(tags)
+
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.operators.python import BranchPythonOperator
@@ -28,7 +32,7 @@ with DAG('windturbine_filesensor',
          catchup=False,
          default_args=default_args,
          default_view='graph',
-         tags=['python', 'postgres', 'email', 'filesystem', 'sensor', 'windturbine'],
+         tags=[tags['study'], tags['airflow-first-view']],
         ) as dag:
   
   email_temp = TaskGroup("EMAIL_TEMP")

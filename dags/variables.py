@@ -1,3 +1,7 @@
+import json
+with open('/home/alekk/Documents/airflow-dags-study-kubernetes/utilities') as tags:
+  tags = json.load(tags)
+
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.models import Variable
@@ -21,7 +25,7 @@ with DAG('variable_dag',
          catchup=False,
          default_args=default_args,
          default_view='graph',
-         tags=['variable'],
+         tags=[tags['study'], tags['airflow-first-view']]
         ) as dag:
 
   # ------> TASK1

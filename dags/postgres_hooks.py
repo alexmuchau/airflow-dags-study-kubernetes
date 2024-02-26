@@ -1,3 +1,7 @@
+import json
+with open('/home/alekk/Documents/airflow-dags-study-kubernetes/utilities') as tags:
+  tags = json.load(tags)
+
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.providers.postgres.hooks.postgres import PostgresHook
@@ -22,7 +26,7 @@ with DAG('postgres_hooks_dag',
          catchup=False,
          default_args=default_args,
          default_view='graph',
-         tags=['postgres', 'hooks', 'python'],
+         tags=[tags['study'], tags['airflow-first-view']],
         ) as dag:
   
   def create_table():

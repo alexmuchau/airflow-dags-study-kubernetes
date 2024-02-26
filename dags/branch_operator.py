@@ -1,3 +1,7 @@
+import json
+with open('/home/alekk/Documents/airflow-dags-study-kubernetes/utilities') as tags:
+  tags = json.load(tags)
+
 from airflow import DAG
 from airflow.operators.python import BranchPythonOperator
 from airflow.operators.python import PythonOperator
@@ -22,7 +26,7 @@ with DAG('branch_dag',
          catchup=False,
          default_args=default_args,
          default_view='graph',
-         tags=['branchs', 'python'],
+         tags=[tags['study'], tags['airflow-first-view']],
         ) as dag:
   
   def random_num():
